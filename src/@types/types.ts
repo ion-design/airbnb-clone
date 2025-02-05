@@ -1,18 +1,25 @@
-export const NumDaysInMonth = {
-  0: 31,
-  1: 28,
-  2: 31,
-  3: 30,
-  4: 31,
-  5: 30,
-  6: 31,
-  7: 31,
-  8: 30,
-  9: 31,
-  10: 30,
-  11: 31,
-} as const;
-export type NumDaysInMonth = keyof typeof NumDaysInMonth;
+export const AddGuestsContextMenuOptions = [
+  {
+    title: 'Adults',
+    text: 'Ages 13 or above',
+  },
+  {
+    title: 'Children',
+    text: 'Ages 2-12',
+  },
+  {
+    title: 'Infants',
+    text: 'Under 2',
+  },
+  {
+    title: 'Pets',
+    text: 'Service animals welcome',
+  },
+  {
+    title: 'Luggage',
+    text: 'Number of bags',
+  },
+] as const;
 
 export const BigSearchItemIds = {
   where: 'where',
@@ -20,35 +27,17 @@ export const BigSearchItemIds = {
   check_out: 'check_out',
   who: 'who',
 } as const;
-export type BigSearchItemIds =
-  typeof BigSearchItemIds[keyof typeof BigSearchItemIds];
 
-export const AddGuestsContextMenuOptions = [
-  { title: 'Adults', text: 'Ages 13 or above' },
-  { title: 'Children', text: 'Ages 2-12' },
-  { title: 'Infants', text: 'Under 2' },
-  { title: 'Pets', text: '' },
-] as const;
-export type AddGuestsContextMenuOptions =
-  typeof AddGuestsContextMenuOptions[keyof typeof AddGuestsContextMenuOptions];
+export const CheckInCheckOutContextMenuTabs = ['Choose Dates', 'Flexible'] as const;
 
 export const SearchDestinationContextMenuOptions = [
-  `I'm Flexible`,
+  'Flexible',
   'Europe',
   'United Kingdom',
   'Southeast Asia',
-  'Canada',
-  'Unites States',
+  'United States',
+  'Caribbean',
 ] as const;
-export type SearchDestinationContextMenuOptions =
-  typeof SearchDestinationContextMenuOptions[keyof typeof SearchDestinationContextMenuOptions];
-
-export const CheckInCheckOutContextMenuTabs = [
-  'Choose Dates',
-  `I'm Flexible`,
-] as const;
-export type CheckInCheckOutContextMenuTabs =
-  typeof CheckInCheckOutContextMenuTabs[keyof typeof CheckInCheckOutContextMenuTabs];
 
 export const Months = [
   'January',
@@ -64,4 +53,18 @@ export const Months = [
   'November',
   'December',
 ] as const;
-export type Months = typeof Months[keyof typeof Months];
+
+export const NumDaysInMonth = {
+  0: 31,
+  1: 28,
+  2: 31,
+  3: 30,
+  4: 31,
+  5: 30,
+  6: 31,
+  7: 31,
+  8: 30,
+  9: 31,
+  10: 30,
+  11: 31,
+} as const;

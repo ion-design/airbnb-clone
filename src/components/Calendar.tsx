@@ -40,7 +40,7 @@ const Calendar = ({
           <p className='text-center text-base mb-3'>
             {Months[month]} {year}
           </p>
-          <div className='grid grid-cols-7 text-center'>
+          <div className='grid grid-cols-7 gap-1 text-center'>
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
               <p
                 key={day}
@@ -53,7 +53,7 @@ const Calendar = ({
             {getCalendar(month, year).map((date, i) => (
               <p
                 key={i}
-                className={`flex items-center justify-center rounded-full border-2 border-transparent h-12 w-12 ${
+                className={`flex items-center justify-center rounded-md border-2 border-transparent h-12 w-12 ${
                   date ? 'hover:border-black cursor-pointer' : ''
                 } ${
                   formatDate(date, month, year) < today
@@ -61,7 +61,6 @@ const Calendar = ({
                     : ''
                 }`}
               >
-                {console.log(formatDate(date, month, year), today)}
                 {date}
               </p>
             ))}

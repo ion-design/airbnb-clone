@@ -3,6 +3,9 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import PlaceholderSearchBar from './components/header/PlaceholderSearchBar';
 import TopTabs from './components/header/bigsearch/TopTabs';
 import UserInfo from './components/header/UserInfo';
+import PropertyCard from './components/PropertyCard';
+import Footer from './components/Footer';
+import CountryMarketing from './components/CountryMarketing';
 // Logos and Icons
 import AirbnbLogo from './assets/airbnb.svg';
 // Types
@@ -44,8 +47,43 @@ function App() {
     ] as { month: NumDaysInMonth; year: number }[];
   };
 
+  const properties = [
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
+      location: 'Malibu, California',
+      distance: '2,043 kilometers away',
+      dates: 'Jul 14-19',
+      price: 1250,
+      rating: 4.98
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Lake Tahoe, Nevada',
+      distance: '1,828 kilometers away',
+      dates: 'Aug 1-6',
+      price: 875,
+      rating: 4.92
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      location: 'Aspen, Colorado',
+      distance: '1,523 kilometers away',
+      dates: 'Jul 20-25',
+      price: 1450,
+      rating: 4.96
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Miami Beach, Florida',
+      distance: '3,127 kilometers away',
+      dates: 'Aug 10-15',
+      price: 950,
+      rating: 4.88
+    }
+  ];
+
   return (
-    <div className='h-screen bg-red-200'>
+    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col'>
       <header className='border-b border-neutral-300 bg-white relative z-10'>
         <div className='py-4 px-10 flex items-center justify-between text-sm font-semibold'>
           <img src={AirbnbLogo} alt='' className='h-8' />
@@ -72,19 +110,18 @@ function App() {
           onClick={() => setShowBigSearch(false)}
         ></div>
       ) : null}
-      <main>
-        <div className='flex items-center justify-center mt-24'>
-          <div className='bg-white p-6 rounded-xl max-w-md space-y-4 shadow-md'>
-            <p className='font-bold text-red-500 text-3xl'>Work in Progress!</p>
-            <p>
-              I intend to create the clone the entire UI of AirBnb just for fun
-              and practice but it'll take a lot a time. I might even decide to
-              drop it midway.
-            </p>
-            <p>Right now, only about 90% of the header is done.</p>
-          </div>
+      <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {properties.map((property, index) => (
+            <PropertyCard
+              key={index}
+              {...property}
+            />
+          ))}
         </div>
+        <CountryMarketing />
       </main>
+      <Footer />
     </div>
   );
 }
