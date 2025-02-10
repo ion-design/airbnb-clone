@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, useRef } from 'react';
 // Components
 import PlaceholderSearchBar from './components/header/PlaceholderSearchBar';
 import TopTabs from './components/header/bigsearch/TopTabs';
@@ -20,6 +20,8 @@ function App() {
   const [selectedMonths, setMonth] = useState<
     { month: NumDaysInMonth; year: number }[] | undefined
   >();
+  const [isHovered, setIsHovered] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleSelectBigSearchItem = (e: ChangeEvent<HTMLElement>) => {
     if (selectedBigSearchItemId === e.target.id)
@@ -33,6 +35,29 @@ function App() {
       getMonthAndYear(date.getMonth() as NumDaysInMonth, date.getFullYear())
     );
   }, []);
+
+  useEffect(() => {
+    let scrollInterval: NodeJS.Timeout;
+
+    const scroll = () => {
+      if (scrollRef.current && !isHovered) {
+        scrollRef.current.scrollLeft += 1;
+        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth - scrollRef.current.clientWidth) {
+          scrollRef.current.scrollLeft = 0;
+        }
+      }
+    };
+
+    if (!isHovered) {
+      scrollInterval = setInterval(scroll, 30);
+    }
+
+    return () => {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+      }
+    };
+  }, [isHovered]);
 
   const getMonthAndYear = (month: NumDaysInMonth, year: number) => {
     let nextMonth = month + 1;
@@ -51,7 +76,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Miami Beach, Florida',
-      distance: '3,127 kilometers away',
+      maxGuests: 4,
       dates: 'Aug 10-15',
       price: 950,
       rating: 4.88
@@ -59,7 +84,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
       location: 'Aspen, Colorado',
-      distance: '1,523 kilometers away',
+      maxGuests: 6,
       dates: 'Jul 20-25',
       price: 1450,
       rating: 4.96
@@ -67,7 +92,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Lake Tahoe, Nevada',
-      distance: '1,828 kilometers away',
+      maxGuests: 8,
       dates: 'Aug 1-6',
       price: 875,
       rating: 4.92
@@ -75,10 +100,42 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
       location: 'Malibu, California',
-      distance: '2,043 kilometers away',
+      maxGuests: 10,
       dates: 'Jul 14-19',
       price: 1250,
       rating: 4.98
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'San Francisco, California',
+      maxGuests: 6,
+      dates: 'Aug 5-10',
+      price: 1100,
+      rating: 4.95
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Seattle, Washington',
+      maxGuests: 4,
+      dates: 'Jul 25-30',
+      price: 900,
+      rating: 4.89
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      location: 'Portland, Oregon',
+      maxGuests: 5,
+      dates: 'Aug 15-20',
+      price: 850,
+      rating: 4.91
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
+      location: 'Austin, Texas',
+      maxGuests: 7,
+      dates: 'Jul 28-Aug 2',
+      price: 950,
+      rating: 4.93
     }
   ];
 
@@ -111,12 +168,16 @@ function App() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-hidden gap-6 scroll-smooth"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {properties.map((property, index) => (
-            <PropertyCard
-              key={index}
-              {...property}
-            />
+            <div className="flex-none w-[300px]" key={index}>
+              <PropertyCard {...property} />
+            </div>
           ))}
         </div>
         <CountryMarketing />
