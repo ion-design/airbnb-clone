@@ -20,6 +20,7 @@ function App() {
   const [selectedMonths, setMonth] = useState<
     { month: NumDaysInMonth; year: number }[] | undefined
   >();
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleSelectBigSearchItem = (e: ChangeEvent<HTMLElement>) => {
     if (selectedBigSearchItemId === e.target.id)
@@ -51,7 +52,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Miami Beach, Florida',
-      distance: '3,127 kilometers away',
+      maxGuests: 4,
       dates: 'Aug 10-15',
       price: 950,
       rating: 4.88
@@ -59,7 +60,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
       location: 'Aspen, Colorado',
-      distance: '1,523 kilometers away',
+      maxGuests: 6,
       dates: 'Jul 20-25',
       price: 1450,
       rating: 4.96
@@ -67,7 +68,7 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Lake Tahoe, Nevada',
-      distance: '1,828 kilometers away',
+      maxGuests: 8,
       dates: 'Aug 1-6',
       price: 875,
       rating: 4.92
@@ -75,10 +76,42 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
       location: 'Malibu, California',
-      distance: '2,043 kilometers away',
+      maxGuests: 10,
       dates: 'Jul 14-19',
       price: 1250,
       rating: 4.98
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Hamptons, New York',
+      maxGuests: 12,
+      dates: 'Aug 5-10',
+      price: 2200,
+      rating: 4.95
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80',
+      location: 'Palm Springs, California',
+      maxGuests: 6,
+      dates: 'Jul 25-30',
+      price: 890,
+      rating: 4.91
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Jackson Hole, Wyoming',
+      maxGuests: 8,
+      dates: 'Aug 15-20',
+      price: 1100,
+      rating: 4.97
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2053&q=80',
+      location: 'Napa Valley, California',
+      maxGuests: 4,
+      dates: 'Jul 28-Aug 2',
+      price: 1500,
+      rating: 4.94
     }
   ];
 
@@ -111,13 +144,24 @@ function App() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {properties.map((property, index) => (
-            <PropertyCard
-              key={index}
-              {...property}
-            />
-          ))}
+        <div 
+          className="overflow-hidden"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div 
+            className="flex gap-6 transition-transform duration-[30000ms] ease-linear"
+            style={{
+              transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
+              width: 'fit-content'
+            }}
+          >
+            {[...properties, ...properties].map((property, index) => (
+              <div className="w-[300px] flex-shrink-0" key={index}>
+                <PropertyCard {...property} />
+              </div>
+            ))}
+          </div>
         </div>
         <CountryMarketing />
       </main>
