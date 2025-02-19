@@ -7,6 +7,7 @@ interface PropertyCardProps {
   dates: string;
   price: number;
   rating: number;
+  maxGuests?: number;
 }
 
 const PropertyCard: FC<PropertyCardProps> = ({
@@ -16,6 +17,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
   dates,
   price,
   rating,
+  maxGuests = 4,
 }) => {
   return (
     <div className="space-y-2">
@@ -32,7 +34,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
           <span className="text-yellow-400">★</span> {rating.toFixed(1)}
         </span>
       </div>
-      <p className="text-gray-500">{distance}</p>
+      <p className="text-gray-500">Up to {maxGuests} guests</p>
       <p className="text-gray-500">{dates}</p>
       <p>
         <span className="font-semibold">${price}</span> night
