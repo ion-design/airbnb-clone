@@ -51,7 +51,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Miami Beach, Florida',
-      distance: '3,127 kilometers away',
+      bedrooms: 3,
+      bathrooms: 2,
       dates: 'Aug 10-15',
       price: 950,
       rating: 4.88
@@ -59,7 +60,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
       location: 'Aspen, Colorado',
-      distance: '1,523 kilometers away',
+      bedrooms: 4,
+      bathrooms: 3,
       dates: 'Jul 20-25',
       price: 1450,
       rating: 4.96
@@ -67,7 +69,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Lake Tahoe, Nevada',
-      distance: '1,828 kilometers away',
+      bedrooms: 2,
+      bathrooms: 2,
       dates: 'Aug 1-6',
       price: 875,
       rating: 4.92
@@ -75,7 +78,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
       location: 'Malibu, California',
-      distance: '2,043 kilometers away',
+      bedrooms: 5,
+      bathrooms: 4,
       dates: 'Jul 14-19',
       price: 1250,
       rating: 4.98
