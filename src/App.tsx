@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent, useRef } from 'react';
 // Components
 import PlaceholderSearchBar from './components/header/PlaceholderSearchBar';
 import TopTabs from './components/header/bigsearch/TopTabs';
@@ -14,12 +14,10 @@ import BigSearch from './components/header/bigsearch';
 
 function App() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
-  const [selectedBigSearchItemId, setSelectedBigSearchItemId] = useState<
-    BigSearchItemIds | undefined
-  >();
-  const [selectedMonths, setMonth] = useState<
-    { month: NumDaysInMonth; year: number }[] | undefined
-  >();
+  const [selectedBigSearchItemId, setSelectedBigSearchItemId] = useState<BigSearchItemIds | undefined>();
+  const [selectedMonths, setMonth] = useState<{ month: NumDaysInMonth; year: number }[] | undefined>();
+  const [isHovered, setIsHovered] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleSelectBigSearchItem = (e: ChangeEvent<HTMLElement>) => {
     if (selectedBigSearchItemId === e.target.id)
@@ -33,6 +31,24 @@ function App() {
       getMonthAndYear(date.getMonth() as NumDaysInMonth, date.getFullYear())
     );
   }, []);
+
+  useEffect(() => {
+    let scrollInterval: NodeJS.Timeout;
+    
+    if (!isHovered && scrollRef.current) {
+      scrollInterval = setInterval(() => {
+        if (scrollRef.current) {
+          if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth - scrollRef.current.clientWidth) {
+            scrollRef.current.scrollLeft = 0;
+          } else {
+            scrollRef.current.scrollLeft += 1;
+          }
+        }
+      }, 20);
+    }
+
+    return () => clearInterval(scrollInterval);
+  }, [isHovered]);
 
   const getMonthAndYear = (month: NumDaysInMonth, year: number) => {
     let nextMonth = month + 1;
@@ -51,7 +67,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Miami Beach, Florida',
-      distance: '3,127 kilometers away',
+      bedrooms: 3,
+      bathrooms: 2,
       dates: 'Aug 10-15',
       price: 950,
       rating: 4.88
@@ -59,7 +76,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
       location: 'Aspen, Colorado',
-      distance: '1,523 kilometers away',
+      bedrooms: 4,
+      bathrooms: 3,
       dates: 'Jul 20-25',
       price: 1450,
       rating: 4.96
@@ -67,7 +85,8 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       location: 'Lake Tahoe, Nevada',
-      distance: '1,828 kilometers away',
+      bedrooms: 2,
+      bathrooms: 2,
       dates: 'Aug 1-6',
       price: 875,
       rating: 4.92
@@ -75,10 +94,47 @@ function App() {
     {
       imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
       location: 'Malibu, California',
-      distance: '2,043 kilometers away',
+      bedrooms: 5,
+      bathrooms: 4,
       dates: 'Jul 14-19',
       price: 1250,
       rating: 4.98
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'San Francisco, California',
+      bedrooms: 3,
+      bathrooms: 2,
+      dates: 'Aug 5-10',
+      price: 1100,
+      rating: 4.95
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      location: 'Seattle, Washington',
+      bedrooms: 2,
+      bathrooms: 1,
+      dates: 'Jul 25-30',
+      price: 890,
+      rating: 4.87
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
+      location: 'Portland, Oregon',
+      bedrooms: 4,
+      bathrooms: 3,
+      dates: 'Aug 15-20',
+      price: 975,
+      rating: 4.93
+    },
+    {
+      imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80',
+      location: 'Austin, Texas',
+      bedrooms: 3,
+      bathrooms: 2,
+      dates: 'Jul 28-Aug 2',
+      price: 850,
+      rating: 4.91
     }
   ];
 
@@ -111,12 +167,16 @@ function App() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-hidden gap-6 scroll-smooth"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           {properties.map((property, index) => (
-            <PropertyCard
-              key={index}
-              {...property}
-            />
+            <div key={index} className="min-w-[300px]">
+              <PropertyCard {...property} />
+            </div>
           ))}
         </div>
         <CountryMarketing />
