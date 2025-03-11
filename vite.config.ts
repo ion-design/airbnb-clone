@@ -1,7 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv, Plugin } from "vite";
 import tsConfigPaths from "vite-tsconfig-paths";
-import ionBabelPlugin from "./ion-babel-plugin";
 
 export default defineConfig(({ command, mode }) => {
 
@@ -19,13 +18,7 @@ export default defineConfig(({ command, mode }) => {
   return {
     // Expose env to the client
     plugins: [
-      react({
-        babel: {
-          plugins: [
-            [ionBabelPlugin, { ionOptions: ionPluginOptions }]
-          ]
-        }
-      }),
+      react(),
       tsConfigPaths(),
     ],
   }
