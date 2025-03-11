@@ -29,7 +29,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
       <div className="flex justify-between">
         <span className="font-bold text-lg">{location}</span>
         <span className="flex items-center gap-3">
-          <span className="text-yellow-400">★</span> {rating.toFixed(1)}
+          <span className="text-purple-700">★</span> {rating.toFixed(1)}
         </span>
       </div>
       <p className="text-gray-500">{distance}</p>
