@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface CountryCard {
   imageUrl: string;
@@ -7,6 +8,7 @@ interface CountryCard {
 }
 
 const CountryMarketing: FC = () => {
+  const navigate = useNavigate();
   const countries: CountryCard[] = [
     {
       imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2066&q=80",
@@ -27,7 +29,15 @@ const CountryMarketing: FC = () => {
 
   return (
     <section className="mt-16">
-      <h2 className="text-2xl font-semibold mb-8">Inspiration for your next trip</h2>
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-2xl font-semibold">Inspiration for your next trip</h2>
+        <button 
+          onClick={() => navigate('/trips')}
+          className="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors"
+        >
+          Show More
+        </button>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {countries.map((country, index) => (
           <div key={index} className="group cursor-pointer">

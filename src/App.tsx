@@ -1,4 +1,5 @@
 import { useState, useEffect, ChangeEvent } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Components
 import PlaceholderSearchBar from './components/header/PlaceholderSearchBar';
 import TopTabs from './components/header/bigsearch/TopTabs';
@@ -6,13 +7,14 @@ import UserInfo from './components/header/UserInfo';
 import PropertyCard from './components/PropertyCard';
 import Footer from './components/Footer';
 import CountryMarketing from './components/CountryMarketing';
+import Trips from './pages/Trips';
 // Logos and Icons
 import AirbnbLogo from './assets/airbnb.svg';
 // Types
 import { BigSearchItemIds, NumDaysInMonth } from './@types/types';
 import BigSearch from './components/header/bigsearch';
 
-function App() {
+function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
   const [selectedBigSearchItemId, setSelectedBigSearchItemId] = useState<
     BigSearchItemIds | undefined
@@ -83,7 +85,7 @@ function App() {
   ];
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col'>
+    <>
       <header className='border-b border-neutral-300 bg-white relative z-10'>
         <div className='py-4 px-10 flex items-center justify-between text-sm font-semibold'>
           <img src={AirbnbLogo} alt='' className='h-8' />
@@ -122,7 +124,20 @@ function App() {
         <CountryMarketing />
       </main>
       <Footer />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className='min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col'>
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/trips" element={<Trips />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
