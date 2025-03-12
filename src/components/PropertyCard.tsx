@@ -35,7 +35,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
       <p className="text-gray-500">{distance}</p>
       <p className="text-gray-500">{dates}</p>
       <p>
-        <span className="font-semibold">${price}</span> night
+        <span className="font-semibold">£{price}</span> night
       </p>
     </div>
   );
