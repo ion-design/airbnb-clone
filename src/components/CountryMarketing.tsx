@@ -73,25 +73,25 @@ const CountryMarketing: FC = () => {
             <div className="p-6">
               <div className="grid grid-cols-1 gap-3">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-2xl font-bold text-blue-600">{country.country}</h3>
+                  <h3 className="text-2xl font-bold text-gray-900">{country.country}</h3>
                   <div className="flex items-center">
                     <span className="text-yellow-500">★</span>
-                    <span className="ml-1 font-medium text-blue-600">{country.rating}</span>
+                    <span className="ml-1 font-medium text-gray-900">{country.rating}</span>
                   </div>
                 </div>
-                <p className="text-blue-600">{country.description}</p>
+                <p className="text-gray-600">{country.description}</p>
                 <div className="flex items-center gap-2">
                   <span className="text-rose-500 font-semibold">{country.price}</span>
                   <span className="text-gray-500">•</span>
-                  <span className="text-blue-600">{country.bathrooms} bath</span>
+                  <span className="text-gray-600">{country.bathrooms} bath</span>
                   {country.hasJapaneseToilet && (
                     <>
                       <span className="text-gray-500">•</span>
-                      <span className="text-blue-600">Smart Toilet</span>
+                      <span className="text-gray-600">Smart Toilet</span>
                     </>
                   )}
                 </div>
-                <button className="text-sm text-blue-600 font-medium justify-self-end">
+                <button className="text-sm text-gray-700 font-medium justify-self-end">
                   View Details →
                 </button>
               </div>
