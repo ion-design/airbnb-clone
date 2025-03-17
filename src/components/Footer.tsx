@@ -21,7 +21,7 @@ const Footer: FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-100 border-t border-gray-200">
+    <footer className="bg-gradient-to-r from-purple-100 to-pink-100 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {footerSections.map((section, index) => (
