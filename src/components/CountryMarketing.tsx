@@ -8,6 +8,7 @@ interface CountryCard {
   price: string;
   rating: number;
   bathrooms: number;
+  hasJapaneseToilet?: boolean;
 }
 
 const CountryMarketing: FC = () => {
@@ -27,7 +28,8 @@ const CountryMarketing: FC = () => {
       description: "Experience the perfect blend of tradition and modern culture",
       price: "from $180/night",
       rating: 4.8,
-      bathrooms: 1
+      bathrooms: 1,
+      hasJapaneseToilet: true
     },
     {
       imageUrl: "https://images.unsplash.com/photo-1589330273594-fade1ee91647",
@@ -82,6 +84,12 @@ const CountryMarketing: FC = () => {
                   <span className="text-rose-500 font-semibold">{country.price}</span>
                   <span className="text-gray-500">•</span>
                   <span className="text-gray-600">{country.bathrooms} bath</span>
+                  {country.hasJapaneseToilet && (
+                    <>
+                      <span className="text-gray-500">•</span>
+                      <span className="text-gray-600">Smart Toilet</span>
+                    </>
+                  )}
                 </div>
                 <button className="text-sm text-black font-medium justify-self-end">
                   View Details →
