@@ -95,7 +95,7 @@ function MainContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col text-base">
+    <div className="min-h-screen bg-white flex flex-col text-base">
       <header className="sticky top-0 z-50 bg-white border-b">
         {/* Header content */}
       </header>
