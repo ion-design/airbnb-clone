@@ -7,6 +7,7 @@ interface CountryCard {
   description: string;
   price: string;
   rating: number;
+  bathrooms: number;
 }
 
 const CountryMarketing: FC = () => {
@@ -17,21 +18,24 @@ const CountryMarketing: FC = () => {
       country: "Italy",
       description: "Explore historic cities, coastal villages, and stunning countryside",
       price: "from $150/night",
-      rating: 4.9
+      rating: 4.9,
+      bathrooms: 2
     },
     {
       imageUrl: "https://images.unsplash.com/photo-1528164344705-47542687000d",
       country: "Japan",
       description: "Experience the perfect blend of tradition and modern culture",
       price: "from $180/night",
-      rating: 4.8
+      rating: 4.8,
+      bathrooms: 1
     },
     {
       imageUrl: "https://images.unsplash.com/photo-1589330273594-fade1ee91647",
       country: "Greece",
       description: "Discover ancient ruins and pristine Mediterranean beaches",
       price: "from $130/night",
-      rating: 4.7
+      rating: 4.7,
+      bathrooms: 2
     }
   ];
 
@@ -74,7 +78,11 @@ const CountryMarketing: FC = () => {
               </div>
               <p className="text-black mb-4">{country.description}</p>
               <div className="flex justify-between items-center">
-                <span className="text-rose-500 font-semibold">{country.price}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-rose-500 font-semibold">{country.price}</span>
+                  <span className="text-gray-500">•</span>
+                  <span className="text-gray-600">{country.bathrooms} bath</span>
+                </div>
                 <button className="text-sm text-black font-medium">
                   View Details →
                 </button>
