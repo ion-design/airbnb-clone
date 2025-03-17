@@ -45,14 +45,14 @@ const CountryMarketing: FC = () => {
     <section className="mt-16 rounded-3xl">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-rose-500 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold text-rose-500">
             Inspiration for your next trip
           </h2>
           <p className="text-gray-600 mt-2">Discover the world's most amazing places</p>
         </div>
         <button 
           onClick={() => navigate('/trips')}
-          className="px-6 py-3 bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-full font-semibold"
+          className="px-6 py-3 bg-rose-500 text-white rounded-full font-semibold"
         >
           Explore More
         </button>
