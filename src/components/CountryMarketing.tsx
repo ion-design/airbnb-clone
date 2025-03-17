@@ -52,7 +52,7 @@ const CountryMarketing: FC = () => {
         </div>
         <button 
           onClick={() => navigate('/trips')}
-          className="px-6 py-3 bg-red-500 text-white rounded-full font-semibold"
+          className="px-6 py-3 bg-blue-500 text-white rounded-full font-semibold"
         >
           Explore More
         </button>
