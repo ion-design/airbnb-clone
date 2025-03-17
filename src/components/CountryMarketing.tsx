@@ -69,7 +69,7 @@ const CountryMarketing: FC = () => {
               />
             </div>
             <div className="p-6">
-              <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 gap-3">
                 <div className="flex justify-between items-start">
                   <h3 className="text-2xl font-bold text-black">{country.country}</h3>
                   <div className="flex items-center">
@@ -83,7 +83,7 @@ const CountryMarketing: FC = () => {
                   <span className="text-gray-500">•</span>
                   <span className="text-gray-600">{country.bathrooms} bath</span>
                 </div>
-                <button className="text-sm text-black font-medium self-end">
+                <button className="text-sm text-black font-medium justify-self-end">
                   View Details →
                 </button>
               </div>
