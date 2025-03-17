@@ -42,7 +42,7 @@ const CountryMarketing: FC = () => {
   ];
 
   return (
-    <section className="mt-16 rounded-3xl bg-blue-500">
+    <section className="mt-16 rounded-3xl">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h2 className="text-3xl font-bold text-rose-500">
