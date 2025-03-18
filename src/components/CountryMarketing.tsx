@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface CountryCard {
@@ -13,6 +13,32 @@ interface CountryCard {
 
 const CountryMarketing: FC = () => {
   const navigate = useNavigate();
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      
+      const images = sectionRef.current.querySelectorAll('.country-image');
+      const cards = sectionRef.current.querySelectorAll('.country-card');
+      
+      images.forEach((image, index) => {
+        const card = cards[index];
+        const rect = card.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        
+        if (isVisible) {
+          const speed = 0.15;
+          const yPos = (window.innerHeight - rect.top) * speed;
+          (image as HTMLElement).style.transform = `translateY(${yPos}px)`;
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const countries: CountryCard[] = [
     {
       imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9",
@@ -42,7 +68,7 @@ const CountryMarketing: FC = () => {
   ];
 
   return (
-    <section className="mt-16 rounded-3xl bg-white">
+    <section ref={sectionRef} className="mt-16 rounded-3xl bg-white overflow-hidden">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h2 className="text-2xl font-bold text-red-500">
@@ -61,16 +87,16 @@ const CountryMarketing: FC = () => {
         {countries.map((country, index) => (
           <div 
             key={index} 
-            className="cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm"
+            className="country-card cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm transform transition-transform hover:scale-[1.02] duration-300"
           >
             <div className="aspect-[16/9] overflow-hidden">
               <img 
                 src={country.imageUrl} 
                 alt={country.country}
-                className="w-full h-full object-cover"
+                className="country-image w-full h-full object-cover transition-transform duration-200"
               />
             </div>
-            <div className="p-6">
+            <div className="p-6 bg-white relative z-10">
               <div className="grid grid-cols-1 gap-3">
                 <div className="flex justify-between items-start">
                   <h3 className="text-2xl font-bold text-gray-900">{country.country}</h3>
