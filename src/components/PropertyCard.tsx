@@ -24,7 +24,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
   onLike
 }) => {
   return (
-    <div className="space-y-1 text-white">
+    <div className="space-y-1 text-black">
       <div className="aspect-square rounded-xl overflow-hidden relative">
         <img 
           src={imageUrl} 
