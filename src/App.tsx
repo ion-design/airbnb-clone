@@ -100,7 +100,16 @@ function MainContent() {
         {/* Header content */}
       </header>
       <main className="flex-1 max-w-7xl mx-auto px-8 py-6">
-        {/* Main content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          {properties.map((property, index) => (
+            <PropertyCard
+              key={index}
+              {...property}
+              isLiked={likedProperties.includes(index)}
+              onLike={() => handleLikeProperty(index)}
+            />
+          ))}
+        </div>
         <CountryMarketing />
       </main>
       <Footer />
