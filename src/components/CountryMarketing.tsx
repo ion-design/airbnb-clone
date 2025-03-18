@@ -45,14 +45,14 @@ const CountryMarketing: FC = () => {
     <section className="mt-16 rounded-3xl bg-white">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-red-500">
+          <h2 className="text-2xl font-bold text-blue-500">
             Inspiration for your next trip
           </h2>
           <p className="text-gray-600 mt-2">Discover the world's most amazing places</p>
         </div>
         <button 
           onClick={() => navigate('/trips')}
-          className="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-full font-semibold"
+          className="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-semibold"
         >
           Explore More
         </button>
