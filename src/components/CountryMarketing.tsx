@@ -83,7 +83,7 @@ const CountryMarketing: FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="font-semibold">{country.price}</span>
                   <span className="text-gray-500">•</span>
-                  <span className="text-gray-600">{country.bathrooms} path</span>
+                  <span className="text-gray-600">{country.bathrooms}</span>
                   {country.hasJapaneseToilet && (
                     <>
                       <span className="text-gray-500">•</span>
@@ -103,4 +103,4 @@ const CountryMarketing: FC = () => {
   );
 };
 
-export default CountryMarketing;
+export default CountryMarketing;Marketing;
