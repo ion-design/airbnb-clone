@@ -41,7 +41,7 @@ const CountryMarketing: FC = () => {
         <h2 className="text-xl font-semibold">Inspiration for your next trip</h2>
         <button 
           onClick={() => navigate('/trips')}
-          className="px-6 py-3 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors text-base font-medium"
+          className="px-8 py-4 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors text-lg font-semibold"
         >
           Show More
         </button>
