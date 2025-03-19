@@ -38,7 +38,7 @@ const CountryMarketing: FC = () => {
   return (
     <section className="mt-16 animate-slide-up">
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-2xl font-semibold">Inspiration for your next trip</h2>
+        <h2 className="text-xl font-semibold">Inspiration for your next trip</h2>
         <button 
           onClick={() => navigate('/trips')}
           className="px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors text-sm font-medium"
