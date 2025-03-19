@@ -18,12 +18,12 @@ const PropertyCard: FC<PropertyCardProps> = ({
   rating,
 }) => {
   return (
-    <div className="space-y-2 animate-fade-in cursor-pointer">
-      <div className="aspect-square rounded-xl overflow-hidden relative shadow-lg transition duration-300 hover:shadow-hover">
+    <div className="space-y-2 animate-fade-in">
+      <div className="aspect-square rounded-xl overflow-hidden relative shadow-lg">
         <img 
           src={imageUrl} 
           alt={location}
-          className="object-cover w-full h-full transition duration-700 hover:scale-105"
+          className="object-cover w-full h-full"
         />
       </div>
       <div className="flex justify-between">
