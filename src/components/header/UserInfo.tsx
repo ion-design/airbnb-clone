@@ -23,8 +23,8 @@ const UserInfo = () => {
           <Bars3Icon className='w-5 h-5 ml-2' />
           <UserCircleIcon className='w-8 h-8 text-neutral-500' />
         </div>
-        {userMenuOpen ? (
-          <div className='absolute bg-white py-2 rounded-xl top-14 right-0 shadow-lg border w-64 z-20'>
+        {userMenuOpen && (
+          <div className='absolute bg-white py-2 rounded-xl top-12 right-0 shadow-lg border w-64 z-50'>
             {[
               'Sign up',
               'Log in',
@@ -32,9 +32,8 @@ const UserInfo = () => {
               'Host an experience',
               'Help',
             ].map((option) => (
-              <>
+              <div key={option}>
                 <p
-                  key={option}
                   className={`p-3 px-5 hover:bg-neutral-100 cursor-pointer ${
                     option !== 'Sign up' ? 'font-normal' : ''
                   }`}
@@ -42,13 +41,13 @@ const UserInfo = () => {
                 >
                   {option}
                 </p>
-                {option === 'Log in' ? (
+                {option === 'Log in' && (
                   <div className='border-b border-b-neutral-200 my-1.5'></div>
-                ) : null}
-              </>
+                )}
+              </div>
             ))}
           </div>
-        ) : null}
+        )}
       </div>
     </div>
   );
