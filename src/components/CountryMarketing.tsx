@@ -36,7 +36,7 @@ const CountryMarketing: FC = () => {
   ];
 
   return (
-    <section className="mt-16">
+    <section className="mt-16 animate-slide-up">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-semibold">Inspiration for your next trip</h2>
         <button 
@@ -48,13 +48,14 @@ const CountryMarketing: FC = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {countries.map((country, index) => (
-          <div key={index} className="group cursor-pointer bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div key={index} className="group cursor-pointer bg-white rounded-xl shadow-lg hover:shadow-hover transition-all duration-300 animate-fade-in">
             <div className="aspect-[4/3] overflow-hidden rounded-t-xl">
               <img 
                 src={country.imageUrl} 
                 alt={country.country}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"/>
             </div>
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-2">{country.country}</h3>
