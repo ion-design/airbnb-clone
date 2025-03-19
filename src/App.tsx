@@ -10,6 +10,7 @@ import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
 import ExperienceDetails from "./pages/ExperienceDetails";
 import ExperienceMarketing from "./components/ExperienceMarketing";
+import AirbnbLogo from "./assets/airbnb-logo.svg";
 
 function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
