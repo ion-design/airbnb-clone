@@ -132,7 +132,7 @@ function MainContent() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col">
+      <div className="min-h-screen bg-gradient-to-br from-rose-50 via-blue-50 to-purple-100 flex flex-col">
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
