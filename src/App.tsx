@@ -8,11 +8,7 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
-// Logos and Icons
-import AirbnbLogo from "./assets/airbnb.svg";
-// Types
-import { BigSearchItemIds, NumDaysInMonth } from "./@types/types";
-import BigSearch from "./components/header/bigsearch";
+import TripDetail from "./pages/TripDetail";
 
 function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
@@ -136,6 +132,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
+          <Route path="/trip/:id" element={<TripDetail />} />
         </Routes>
       </div>
     </Router>
