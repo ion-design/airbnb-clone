@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Components
+import AirbnbLogo from "./components/AirbnbLogo";
 import PlaceholderSearchBar from "./components/header/PlaceholderSearchBar";
 import TopTabs from "./components/header/bigsearch/TopTabs";
 import UserInfo from "./components/header/UserInfo";
@@ -92,7 +93,9 @@ function MainContent() {
     <>
       <header className="border-b border-neutral-300 bg-white relative z-10">
         <div className="py-4 px-10 flex items-center justify-between text-sm font-semibold">
-          <img src={AirbnbLogo} alt="" className="h-8" />
+          <div className="text-rose-500">
+            <AirbnbLogo />
+          </div>
           <PlaceholderSearchBar
             showBigSearch={showBigSearch}
             setShowBigSearch={setShowBigSearch}
