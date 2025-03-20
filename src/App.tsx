@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
 import TripDetail from "./pages/TripDetail";
+// Assets
+import AirbnbLogo from "./assets/airbnb-logo.svg";
 
 function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
