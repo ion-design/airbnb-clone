@@ -7,7 +7,7 @@ const UserInfo = () => {
 
   return (
     <div className='flex items-center space-x-1'>
-      <p className='p-3 rounded-full transition-all cursor-pointer hover:bg-neutral-100'>
+      <p className='p-3 rounded-full transition-all cursor-pointer hover:bg-neutral-100 text-blue-600'>
         Become a host
       </p>
       <div className='p-3 rounded-full transition-all cursor-pointer hover:bg-neutral-100'>
@@ -25,7 +25,7 @@ const UserInfo = () => {
         </div>
         {userMenuOpen ? (
           <div className='absolute bg-white py-2 rounded-xl top-14 right-0 shadow-lg border w-64 z-20'>
-            {[
+            {[ 
               'Sign up',
               'Log in',
               'Host your home',
