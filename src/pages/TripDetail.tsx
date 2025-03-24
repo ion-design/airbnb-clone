@@ -200,6 +200,95 @@ const TripDetail: FC = () => {
           </form>
         </div>
       )}
+      {step === 'checkout' && (
+        <div className="max-w-2xl mx-auto bg-gradient-to-b from-[#e6e6e6] to-[#ffffff] border-2 border-[#999999] rounded p-8">
+          <div className="flex items-center justify-center gap-2 mb-6 bg-[#fffde4] p-4 border border-[#ffdb4d] rounded">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Padlock.svg/1200px-Padlock.svg.png" 
+              alt="secure" 
+              className="w-6 h-6"
+            />
+            <span className="text-[#666666] font-bold">SECURE CHECKOUT - 128 BIT SSL ENCRYPTED</span>
+          </div>
+
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://www.pngall.com/wp-content/uploads/2/Security-Badge-PNG-Clipart.png" 
+              alt="security badges" 
+              className="h-16"
+            />
+          </div>
+
+          <form className="space-y-6">
+            <div className="bg-[#f0f7ff] p-4 border border-[#b3d1ff] rounded mb-6">
+              <div className="flex items-center gap-2 mb-2">
+                <img 
+                  src="https://www.svgrepo.com/show/83495/shield-variant-with-check-mark.svg" 
+                  alt="verified" 
+                  className="w-5 h-5"
+                />
+                <span className="text-[#003366] font-bold text-sm">VERISIGN SECURED TRANSACTION</span>
+              </div>
+              <p className="text-[#666666] text-xs">All information is encrypted and transmitted using Secure Socket Layer (SSL) protocol.</p>
+            </div>
+
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">CARDHOLDER NAME:</label>
+              <input 
+                type="text" 
+                className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+              />
+            </div>
+
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">EMAIL ADDRESS:</label>
+              <input 
+                type="email" 
+                className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+              />
+            </div>
+
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">CARD INFORMATION:</label>
+              <div className="mb-4">
+                <input 
+                  type="text" 
+                  placeholder="XXXX-XXXX-XXXX-XXXX" 
+                  className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <input 
+                  type="text" 
+                  placeholder="MM/YY" 
+                  className="p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+                />
+                <input 
+                  type="text" 
+                  placeholder="CVV" 
+                  className="p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-4 mt-6">
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Pic.png" alt="mastercard" className="h-8" />
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/Visa-PNG-Picture.png" alt="visa" className="h-8" />
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/PayPal-Download-PNG.png" alt="paypal" className="h-8" />
+            </div>
+
+            <button 
+              className="w-full py-3 bg-gradient-to-b from-[#4d90fe] to-[#357ae8] text-white font-bold rounded border border-[#3079ed] shadow-sm hover:from-[#357ae8] hover:to-[#2b6ad9]"
+            >
+              PROCESS SECURE PAYMENT
+            </button>
+
+            <p className="text-center text-xs text-[#666666] mt-4">
+              By clicking "Process Secure Payment" you agree to our Terms of Service and Privacy Policy
+            </p>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
