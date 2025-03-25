@@ -1,16 +1,15 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-// Components
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PlaceholderSearchBar from './components/header/PlaceholderSearchBar';
 import TopTabs from './components/header/bigsearch/TopTabs';
 import UserInfo from './components/header/UserInfo';
 import PropertyCard from './components/PropertyCard';
 import Footer from './components/Footer';
 import CountryMarketing from './components/CountryMarketing';
-// Logos and Icons
 import AirbnbLogo from './assets/airbnb.svg';
-// Types
 import { BigSearchItemIds, NumDaysInMonth } from './@types/types';
 import BigSearch from './components/header/bigsearch';
+import TripDetails from './pages/TripDetails';
 
 function App() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
@@ -87,46 +86,53 @@ function App() {
   ];
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col'>
-      <header className='border-b border-neutral-300 bg-white relative z-10'>
-        <div className='py-4 px-10 flex items-center justify-between text-sm font-semibold'>
-          <img src={AirbnbLogo} alt='' className='h-8' />
-          <PlaceholderSearchBar
-            showBigSearch={showBigSearch}
-            setShowBigSearch={setShowBigSearch}
-          />
-          <TopTabs showBigSearch={showBigSearch} />
-          <UserInfo />
-        </div>
-
-        {showBigSearch ? (
-          <BigSearch
-            selectedMonths={selectedMonths}
-            selectedBigSearchItemId={selectedBigSearchItemId}
-            setSelectedBigSearchItemId={setSelectedBigSearchItemId}
-            handleSelectBigSearchItem={handleSelectBigSearchItem}
-          />
-        ) : null}
-      </header>
-      {showBigSearch ? (
-        <div
-          className='bg-black fixed top-0 left-0 h-screen w-screen bg-opacity-30'
-          onClick={() => setShowBigSearch(false)}
-        ></div>
-      ) : null}
-      <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {properties.map((property, index) => (
-            <PropertyCard
-              key={index}
-              {...property}
+    <Router>
+      <div className='min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col'>
+        <header className='border-b border-neutral-300 bg-white relative z-10'>
+          <div className='py-4 px-10 flex items-center justify-between text-sm font-semibold'>
+            <img src={AirbnbLogo} alt='' className='h-8' />
+            <PlaceholderSearchBar
+              showBigSearch={showBigSearch}
+              setShowBigSearch={setShowBigSearch}
             />
-          ))}
-        </div>
-        <CountryMarketing />
-      </main>
-      <Footer />
-    </div>
+            <TopTabs showBigSearch={showBigSearch} />
+            <UserInfo />
+          </div>
+
+          {showBigSearch ? (
+            <BigSearch
+              selectedMonths={selectedMonths}
+              selectedBigSearchItemId={selectedBigSearchItemId}
+              setSelectedBigSearchItemId={setSelectedBigSearchItemId}
+              handleSelectBigSearchItem={handleSelectBigSearchItem}
+            />
+          ) : null}
+        </header>
+        {showBigSearch ? (
+          <div
+            className='bg-black fixed top-0 left-0 h-screen w-screen bg-opacity-30'
+            onClick={() => setShowBigSearch(false)}
+          ></div>
+        ) : null}
+        <Routes>
+          <Route path="/" element={
+            <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {properties.map((property, index) => (
+                  <PropertyCard
+                    key={index}
+                    {...property}
+                  />
+                ))}
+              </div>
+              <CountryMarketing />
+            </main>
+          } />
+          <Route path="/trip/:id" element={<TripDetails />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
