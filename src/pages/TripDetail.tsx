@@ -6,6 +6,7 @@ const TripDetail: FC = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState<'details' | 'checkout'>('details');
 
+  // This would typically come from an API
   const tripDetails = {
     id: "italy-2024",
     imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9",
@@ -200,96 +201,93 @@ const TripDetail: FC = () => {
         </div>
       )}
       {step === 'checkout' && (
-        <>
-          <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 animate-bounce">
-            <div className="bg-[#ff0] border-4 border-[#f00] p-4 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] rotate-[2deg]">
-              <p className="font-['Comic_Sans_MS'] text-2xl text-[#f00] blink animate-pulse">
-                🔒 SUPER SECURE CHECKOUT!! 🔒
-              </p>
-            </div>
+        <div className="max-w-2xl mx-auto bg-gradient-to-b from-[#e6e6e6] to-[#ffffff] border-2 border-[#999999] rounded p-8">
+          <div className="flex items-center justify-center gap-2 mb-6 bg-[#fffde4] p-4 border border-[#ffdb4d] rounded">
+            <img 
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Padlock.svg/1200px-Padlock.svg.png" 
+              alt="secure" 
+              className="w-6 h-6"
+            />
+            <span className="text-[#666666] font-bold">SECURE CHECKOUT - 128 BIT SSL ENCRYPTED</span>
           </div>
 
-          <div className="max-w-2xl mx-auto bg-[#c3d9ff] border-8 border-[#000080] rounded-none p-8">
-            <div className="flex items-center justify-center gap-2 mb-6 bg-[#ffff00] p-4 border-4 border-[#ff0000] marquee">
-              <img 
-                src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/anim-lock.gif" 
-                alt="secure" 
-                className="w-12 h-12"
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://www.pngall.com/wp-content/uploads/2/Security-Badge-PNG-Clipart.png" 
+              alt="security badges" 
+              className="h-16"
+            />
+          </div>
+
+          <form className="space-y-6">
+            <div className="bg-[#f0f7ff] p-4 border border-[#b3d1ff] rounded mb-6">
+              <div className="flex items-center gap-2 mb-2">
+                <img 
+                  src="https://www.svgrepo.com/show/83495/shield-variant-with-check-mark.svg" 
+                  alt="verified" 
+                  className="w-5 h-5"
+                />
+                <span className="text-[#003366] font-bold text-sm">VERISIGN SECURED TRANSACTION</span>
+              </div>
+              <p className="text-[#666666] text-xs">All information is encrypted and transmitted using Secure Socket Layer (SSL) protocol.</p>
+            </div>
+
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">CARDHOLDER NAME:</label>
+              <input 
+                type="text" 
+                className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
               />
-              <span className="font-['MS_Sans_Serif'] text-[#ff0000] font-bold animate-pulse">
-                !!!SECURE CHECKOUT - PROTECTED BY NETSCAPE!!!
-              </span>
             </div>
 
-            <div className="flex justify-center mb-6 space-x-4">
-              <img src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/securesite.gif" alt="secure site" className="h-20" />
-              <img src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/securetransaction.gif" alt="secure transaction" className="h-20" />
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">EMAIL ADDRESS:</label>
+              <input 
+                type="email" 
+                className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+              />
             </div>
 
-            <form className="space-y-6">
-              <div className="bg-[#ffffff] border-4 border-[#000080] p-4">
-                <label className="block text-[#000080] font-['MS_Sans_Serif'] font-bold mb-2">
-                  YOUR NAME:
-                </label>
+            <div className="bg-white border border-[#cccccc] p-4 rounded">
+              <label className="block text-[#333333] font-bold mb-2 text-sm">CARD INFORMATION:</label>
+              <div className="mb-4">
                 <input 
                   type="text" 
-                  className="w-full p-2 border-2 border-[#000080] bg-[#ffffcc] font-['Courier_New']" 
+                  placeholder="XXXX-XXXX-XXXX-XXXX" 
+                  className="w-full p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
                 />
               </div>
-
-              <div className="bg-[#ffffff] border-4 border-[#000080] p-4">
-                <label className="block text-[#000080] font-['MS_Sans_Serif'] font-bold mb-2">
-                  E-MAIL ADDRESS:
-                </label>
-                <input 
-                  type="email" 
-                  className="w-full p-2 border-2 border-[#000080] bg-[#ffffcc] font-['Courier_New']" 
-                />
-              </div>
-
-              <div className="bg-[#ffffff] border-4 border-[#000080] p-4">
-                <label className="block text-[#000080] font-['MS_Sans_Serif'] font-bold mb-2">
-                  CREDIT CARD INFO:
-                </label>
+              <div className="grid grid-cols-2 gap-4">
                 <input 
                   type="text" 
-                  placeholder="#### #### #### ####" 
-                  className="w-full p-2 border-2 border-[#000080] bg-[#ffffcc] font-['Courier_New'] mb-2" 
+                  placeholder="MM/YY" 
+                  className="p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
                 />
-                <div className="grid grid-cols-2 gap-4">
-                  <input 
-                    type="text" 
-                    placeholder="EXPIRY (MM/YY)" 
-                    className="p-2 border-2 border-[#000080] bg-[#ffffcc] font-['Courier_New']" 
-                  />
-                  <input 
-                    type="text" 
-                    placeholder="SECURITY CODE" 
-                    className="p-2 border-2 border-[#000080] bg-[#ffffcc] font-['Courier_New']" 
-                  />
-                </div>
+                <input 
+                  type="text" 
+                  placeholder="CVV" 
+                  className="p-2 border border-[#999999] bg-[#f9f9f9] rounded font-['Courier_New']" 
+                />
               </div>
+            </div>
 
-              <div className="flex justify-center gap-8 mt-6">
-                <img src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/visa.gif" alt="visa" className="h-12" />
-                <img src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/mastercard.gif" alt="mastercard" className="h-12" />
-              </div>
+            <div className="flex justify-center gap-4 mt-6">
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Pic.png" alt="mastercard" className="h-8" />
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/Visa-PNG-Picture.png" alt="visa" className="h-8" />
+              <img src="https://www.pngall.com/wp-content/uploads/2016/07/PayPal-Download-PNG.png" alt="paypal" className="h-8" />
+            </div>
 
-              <button 
-                className="w-full py-4 bg-[#00ff00] text-[#000080] font-['MS_Sans_Serif'] text-xl font-bold border-4 border-[#000080] hover:bg-[#00dd00] shadow-[5px_5px_0px_0px_rgba(0,0,0,1)]"
-              >
-                !!! CLICK HERE TO SUBMIT PAYMENT !!!
-              </button>
+            <button 
+              className="w-full py-3 bg-gradient-to-b from-[#4d90fe] to-[#357ae8] text-white font-bold rounded border border-[#3079ed] shadow-sm hover:from-[#357ae8] hover:to-[#2b6ad9]"
+            >
+              PROCESS SECURE PAYMENT
+            </button>
 
-              <div className="text-center">
-                <img src="https://web.archive.org/web/19990117032727im_/http://www.geocities.com/Heartland/Plains/6271/construction.gif" alt="under construction" className="h-12 mx-auto" />
-                <p className="font-['Comic_Sans_MS'] text-[#ff0000] text-sm mt-2">
-                  Best viewed in Netscape Navigator 3.0 or higher!
-                </p>
-              </div>
-            </form>
-          </div>
-        </>
+            <p className="text-center text-xs text-[#666666] mt-4">
+              By clicking "Process Secure Payment" you agree to our Terms of Service and Privacy Policy
+            </p>
+          </form>
+        </div>
       )}
     </div>
   );
