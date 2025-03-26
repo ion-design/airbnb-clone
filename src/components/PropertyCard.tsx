@@ -36,7 +36,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
           <span className="text-yellow-500">★</span> {rating.toFixed(1)}
         </span>
       </div>
-      <p className="text-gray-500">{distance ? `${distance} miles away` : ''}</p>
+      <p className="text-gray-500">{distance ? `${distance} miles away` : 'Distance not available'}</p>
       <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
       <p className="text-gray-500">{dates}</p>
       <p>
