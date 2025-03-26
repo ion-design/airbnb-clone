@@ -59,8 +59,7 @@ function MainContent() {
       bathrooms: 1,
       dates: "Aug 10-15",
       price: 750,
-      rating: 4.88,
-      distance: 2.5
+      rating: 4.88
     },
     {
       imageUrl:
@@ -70,8 +69,7 @@ function MainContent() {
       bathrooms: 2,
       dates: "Jul 20-25",
       price: 850,
-      rating: 4.96,
-      distance: 1.8
+      rating: 4.96
     },
     {
       imageUrl:
@@ -81,7 +79,7 @@ function MainContent() {
       bathrooms: 1,
       dates: "Aug 1-6",
       price: 675,
-      rating: 4.92,
+      rating: 4.92
     },
     {
       imageUrl:
@@ -91,7 +89,7 @@ function MainContent() {
       bathrooms: 3,
       dates: "Jul 14-19",
       price: 950,
-      rating: 4.98,
+      rating: 4.98
     },
   ];
 
