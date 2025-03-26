@@ -60,6 +60,7 @@ function MainContent() {
       dates: "Aug 10-15",
       price: 750,
       rating: 4.88,
+      distance: 2.5
     },
     {
       imageUrl:
@@ -70,6 +71,7 @@ function MainContent() {
       dates: "Jul 20-25",
       price: 850,
       rating: 4.96,
+      distance: 1.8
     },
     {
       imageUrl:
