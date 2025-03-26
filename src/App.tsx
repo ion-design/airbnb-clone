@@ -57,7 +57,7 @@ function MainContent() {
       distance: "2 kilometers away",
       dates: "Aug 10-15",
       price: 750,
-      rating: 4.88,
+      rating: 4.88
     },
     {
       imageUrl:
@@ -66,7 +66,7 @@ function MainContent() {
       distance: "3 kilometers away",
       dates: "Jul 20-25",
       price: 850,
-      rating: 4.96,
+      rating: 4.96
     },
     {
       imageUrl:
@@ -75,7 +75,7 @@ function MainContent() {
       distance: "4 kilometers away",
       dates: "Aug 1-6",
       price: 675,
-      rating: 4.92,
+      rating: 4.92
     },
     {
       imageUrl:
@@ -84,7 +84,7 @@ function MainContent() {
       distance: "20 kilometers away",
       dates: "Jul 14-19",
       price: 950,
-      rating: 4.98,
+      rating: 4.98
     },
   ];
 
