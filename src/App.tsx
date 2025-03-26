@@ -8,7 +8,6 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
-import TripDetail from "./pages/TripDetail";
 // Logos and Icons
 import AirbnbLogo from "./assets/airbnb.svg";
 // Types
@@ -141,7 +140,6 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
-          <Route path="/trip/:id" element={<TripDetail />} />
         </Routes>
       </div>
     </Router>
