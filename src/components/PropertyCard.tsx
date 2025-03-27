@@ -7,15 +7,18 @@ interface PropertyCardProps {
   dates: string;
   price: number;
   rating: number;
+  bedrooms: number;
+  bathrooms: number;
 }
 
 const PropertyCard: FC<PropertyCardProps> = ({
   imageUrl,
   location,
-  distance,
   dates,
   price,
   rating,
+  bedrooms,
+  bathrooms,
 }) => {
   return (
     <div className="space-y-2">
@@ -32,7 +35,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
           <span className="text-yellow-500">★</span> {rating.toFixed(1)}
         </span>
       </div>
-      <p className="text-gray-500">{distance}</p>
+      <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
       <p className="text-gray-500">{dates}</p>
       <p>
         <span className="font-semibold">£{price}</span> night
