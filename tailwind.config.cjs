@@ -11,6 +11,7 @@ module.exports = {
       },
       animation: {
         scroll: 'scroll 30s linear infinite',
+        pause: 'scroll 30s linear infinite paused',
       },
     },
   },
