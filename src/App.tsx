@@ -155,7 +155,7 @@ function MainContent() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="overflow-hidden">
+        <div className="overflow-hidden hover:[&>*]:pause">
           <div className="flex gap-6 animate-scroll">
             {[...properties, ...properties].map((property, index) => (
               <div className="min-w-[300px]" key={index}>
