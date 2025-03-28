@@ -1,6 +1,5 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// Components
 import PlaceholderSearchBar from "./components/header/PlaceholderSearchBar";
 import TopTabs from "./components/header/bigsearch/TopTabs";
 import UserInfo from "./components/header/UserInfo";
@@ -9,9 +8,7 @@ import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
 import TripDetail from "./pages/TripDetail";
-// Logos and Icons
 import AirbnbLogo from "./assets/airbnb.svg";
-// Types
 import { BigSearchItemIds, NumDaysInMonth } from "./@types/types";
 import BigSearch from "./components/header/bigsearch";
 
@@ -91,6 +88,42 @@ function MainContent() {
       price: 950,
       rating: 4.98,
     },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+      location: "Mayfair, London",
+      bedrooms: 3,
+      bathrooms: 2,
+      dates: "Aug 20-25",
+      price: 1200,
+      rating: 4.95,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+      location: "Camden, London",
+      bedrooms: 2,
+      bathrooms: 1,
+      dates: "Sep 1-6",
+      price: 600,
+      rating: 4.87,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+      location: "Hackney, London",
+      bedrooms: 1,
+      bathrooms: 1,
+      dates: "Aug 15-20",
+      price: 550,
+      rating: 4.91,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
+      location: "Brixton, London",
+      bedrooms: 2,
+      bathrooms: 2,
+      dates: "Sep 5-10",
+      price: 700,
+      rating: 4.89,
+    },
   ];
 
   return (
@@ -122,10 +155,14 @@ function MainContent() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex gap-6 animate-scroll">
+            {[...properties, ...properties].map((property, index) => (
+              <div className="min-w-[300px]" key={index}>
+                <PropertyCard {...property} />
+              </div>
+            ))}
+          </div>
         </div>
         <CountryMarketing />
       </main>
