@@ -1,6 +1,5 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// Components
 import PlaceholderSearchBar from "./components/header/PlaceholderSearchBar";
 import TopTabs from "./components/header/bigsearch/TopTabs";
 import UserInfo from "./components/header/UserInfo";
@@ -8,9 +7,8 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
-// Logos and Icons
+import TripDetail from "./pages/TripDetail";
 import AirbnbLogo from "./assets/airbnb.svg";
-// Types
 import { BigSearchItemIds, NumDaysInMonth } from "./@types/types";
 import BigSearch from "./components/header/bigsearch";
 
@@ -51,40 +49,80 @@ function MainContent() {
 
   const properties = [
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Notting Hill, London",
-      distance: "2 kilometers away",
+      distance: "2.5 miles away",
+      bedrooms: 2,
+      bathrooms: 1,
       dates: "Aug 10-15",
       price: 750,
       rating: 4.88,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       location: "Shoreditch, London",
-      distance: "3 kilometers away",
+      distance: "1.8 miles away",
+      bedrooms: 3,
+      bathrooms: 2,
       dates: "Jul 20-25",
       price: 850,
       rating: 4.96,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Chelsea, London",
-      distance: "4 kilometers away",
+      distance: "3.2 miles away",
+      bedrooms: 1,
+      bathrooms: 1,
       dates: "Aug 1-6",
       price: 675,
       rating: 4.92,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
       location: "Kensington, London",
-      distance: "20 kilometers away",
+      distance: "4.0 miles away",
+      bedrooms: 4,
+      bathrooms: 3,
       dates: "Jul 14-19",
       price: 950,
       rating: 4.98,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+      location: "Mayfair, London",
+      bedrooms: 3,
+      bathrooms: 2,
+      dates: "Aug 20-25",
+      price: 1200,
+      rating: 4.95,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+      location: "Camden, London",
+      bedrooms: 2,
+      bathrooms: 1,
+      dates: "Sep 1-6",
+      price: 600,
+      rating: 4.87,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+      location: "Hackney, London",
+      bedrooms: 1,
+      bathrooms: 1,
+      dates: "Aug 15-20",
+      price: 550,
+      rating: 4.91,
+    },
+    {
+      imageUrl: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
+      location: "Brixton, London",
+      bedrooms: 2,
+      bathrooms: 2,
+      dates: "Sep 5-10",
+      price: 700,
+      rating: 4.89,
     },
   ];
 
@@ -117,10 +155,14 @@ function MainContent() {
         ></div>
       ) : null}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
-          ))}
+        <div className="overflow-hidden">
+          <div className="flex gap-6 animate-scroll hover:animate-pause">
+            {[...properties, ...properties].map((property, index) => (
+              <div className="min-w-[300px]" key={index}>
+                <PropertyCard {...property} />
+              </div>
+            ))}
+          </div>
         </div>
         <CountryMarketing />
       </main>
@@ -136,6 +178,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
+          <Route path="/trip/:id" element={<TripDetail />} />
         </Routes>
       </div>
     </Router>
