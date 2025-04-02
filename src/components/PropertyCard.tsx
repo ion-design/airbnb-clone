@@ -34,7 +34,9 @@ const PropertyCard: FC<PropertyCardProps> = ({
           <span className="text-yellow-500">★</span> {rating.toFixed(1)}
         </span>
       </div>
-      <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
+      <p className="text-[20px] tracking-[20px] text-center uppercase text-[#93B7FF]">
+        {bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}
+      </p>
       <p className="text-gray-500">{dates}</p>
       <p>
         <span className="font-semibold">£{price}</span> night
