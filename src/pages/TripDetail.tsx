@@ -90,7 +90,7 @@ const TripDetail: FC = () => {
             alt={trip.country} 
             className="w-full h-[400px] object-cover rounded-xl"
           />
-          <h1 className="text-3xl font-bold mt-6 mb-4">{trip.country}</h1>
+          <h1 className="text-2xl font-semibold text-[#A25B5B] mt-6 mb-4">{trip.country}</h1>
           <p className="text-gray-600 mb-8">{trip.description}</p>
           
           <h2 className="text-2xl font-semibold mb-4">Itinerary</h2>
