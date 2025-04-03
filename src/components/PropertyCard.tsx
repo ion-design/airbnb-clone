@@ -15,7 +15,6 @@ const PropertyCard: FC<PropertyCardProps> = ({
   location,
   bedrooms,
   bathrooms,
-  dates,
   price,
   rating,
 }) => {
@@ -35,9 +34,8 @@ const PropertyCard: FC<PropertyCardProps> = ({
         </span>
       </div>
       <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
-      <p className="text-gray-500">{dates}</p>
-      <p>
-        <span className="font-semibold">£{price}</span> night
+      <p className="text-xl font-bold">
+        £{price} <span className="text-base font-normal">night</span>
       </p>
     </div>
   );
