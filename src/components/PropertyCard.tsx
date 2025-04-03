@@ -3,7 +3,8 @@ import { FC } from 'react';
 interface PropertyCardProps {
   imageUrl: string;
   location: string;
-  distance: string;
+  bedrooms: number;
+  bathrooms: number;
   dates: string;
   price: number;
   rating: number;
@@ -12,8 +13,8 @@ interface PropertyCardProps {
 const PropertyCard: FC<PropertyCardProps> = ({
   imageUrl,
   location,
-  distance,
-  dates,
+  bedrooms,
+  bathrooms,
   price,
   rating,
 }) => {
@@ -32,10 +33,9 @@ const PropertyCard: FC<PropertyCardProps> = ({
           <span className="text-yellow-500">★</span> {rating.toFixed(1)}
         </span>
       </div>
-      <p className="text-gray-500">{distance}</p>
-      <p className="text-gray-500">{dates}</p>
-      <p>
-        <span className="font-semibold">£{price}</span> night
+      <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
+      <p className="text-2xl font-bold text-[#2847B7]">
+        £{price} <span className="text-lg font-normal">night</span>
       </p>
     </div>
   );
