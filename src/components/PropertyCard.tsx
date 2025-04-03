@@ -34,8 +34,8 @@ const PropertyCard: FC<PropertyCardProps> = ({
         </span>
       </div>
       <p className="text-gray-500">{bedrooms} bed{bedrooms !== 1 ? 's' : ''} · {bathrooms} bath{bathrooms !== 1 ? 's' : ''}</p>
-      <p className="text-xl font-bold">
-        £{price} <span className="text-base font-normal">night</span>
+      <p className="text-2xl font-bold text-[#2847B7]">
+        £{price} <span className="text-lg font-normal">night</span>
       </p>
     </div>
   );
