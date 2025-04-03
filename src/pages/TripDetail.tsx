@@ -8,13 +8,61 @@ const TripDetail: FC = () => {
   const [selectedDate, setSelectedDate] = useState<string>('');
   const [selectedExcursions, setSelectedExcursions] = useState<string[]>([]);
 
-  // In a real app, this would come from an API
-  const trip: Trip | undefined = {
-    // ... trip data matching the ID
+  // Mock trip data - in a real app, this would come from an API
+  const trips: Record<string, Trip> = {
+    'italy-2024': {
+      id: "italy-2024",
+      imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9",
+      country: "Italy",
+      description: "Explore historic cities, coastal villages, and stunning countryside",
+      price: 2499,
+      duration: "10 days",
+      startDates: ["2024-06-15", "2024-07-01", "2024-08-15"],
+      itinerary: [
+        {
+          day: 1,
+          title: "Rome Arrival",
+          description: "Welcome to the Eternal City",
+          activities: ["Airport transfer", "Welcome dinner", "Evening walk"]
+        },
+        {
+          day: 2,
+          title: "Vatican & Roman Forum",
+          description: "Explore the heart of Roman history",
+          activities: ["Vatican Museums", "Sistine Chapel", "Roman Forum tour"]
+        }
+      ],
+      excursions: [
+        {
+          title: "Vatican Museums Tour",
+          description: "Private guided tour of the Vatican Museums",
+          price: 89,
+          duration: "3 hours"
+        },
+        {
+          title: "Colosseum Night Tour",
+          description: "Exclusive night access to the Colosseum",
+          price: 99,
+          duration: "2 hours"
+        }
+      ]
+    }
   };
 
+  const trip = trips[id || ''];
+
   if (!trip) {
-    return <div>Trip not found</div>;
+    return (
+      <div className="max-w-7xl mx-auto px-8 py-16 text-center">
+        <h1 className="text-2xl font-bold text-gray-900">Trip not found</h1>
+        <button 
+          onClick={() => navigate('/')}
+          className="mt-4 px-4 py-2 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-colors"
+        >
+          Return Home
+        </button>
+      </div>
+    );
   }
 
   const handleExcursionToggle = (title: string) => {
