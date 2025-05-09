@@ -12,7 +12,7 @@ interface PropertyCardProps {
 const PropertyCard: FC<PropertyCardProps> = ({
   imageUrl,
   location,
-  distance = "3 Millioon away",
+  distance = "20 kilometers far",
   dates,
   price,
   rating,
