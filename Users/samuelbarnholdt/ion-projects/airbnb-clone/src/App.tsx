@@ -57,8 +57,12 @@ function MainContent() {
 
   const properties = [
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      additionalImages: [
+        "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858"
+      ],
       location: "Notting Hill, London",
       distance: "2 kilometers away",
       dates: "Aug 10-15",
@@ -66,8 +70,7 @@ function MainContent() {
       rating: 4.75
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       location: "Shoreditch, London",
       distance: "3 kilometers away",
       dates: "Jul 20-25",
@@ -75,8 +78,7 @@ function MainContent() {
       rating: 4.91
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Chelsea, London",
       distance: "4 kilometers away",
       dates: "Aug 1-6",
@@ -84,8 +86,7 @@ function MainContent() {
       rating: 4.82
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
       location: "Kensington, London",
       distance: "20 kilometers away",
       dates: "Jul 14-19",
@@ -95,12 +96,21 @@ function MainContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col text-base">
+    <div className="min-h-screen bg-white flex flex-col text-base">
       <header className="sticky top-0 z-50 bg-white border-b">
         {/* Header content */}
       </header>
       <main className="flex-1 max-w-7xl mx-auto px-8 py-6">
-        {/* Main content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          {properties.map((property, index) => (
+            <PropertyCard
+              key={index}
+              {...property}
+              isLiked={likedProperties.includes(index)}
+              onLike={() => handleLikeProperty(index)}
+            />
+          ))}
+        </div>
         <CountryMarketing />
       </main>
       <Footer />
