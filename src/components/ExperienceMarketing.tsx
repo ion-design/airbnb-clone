@@ -39,52 +39,7 @@ export const experiences: Experience[] = [
       }
     ]
   },
-  {
-    id: "tokyo-tech-tradition",
-    imageUrl: "https://images.unsplash.com/photo-1528164344705-47542687000d",
-    title: "Tokyo: Where Tech Meets Tradition",
-    description: "Experience the contrast of ancient temples and modern innovation",
-    duration: "7 days",
-    price: 1899,
-    rating: 4.88,
-    itinerary: [
-      {
-        title: "Akihabara Tech Tour",
-        description: "Explore Japan's electronics and anime culture"
-      },
-      {
-        title: "Traditional Tea Ceremony",
-        description: "Learn the art of Japanese tea preparation"
-      },
-      {
-        title: "Robot Restaurant Show",
-        description: "Experience Tokyo's famous tech entertainment"
-      }
-    ]
-  },
-  {
-    id: "greek-island-adventure",
-    imageUrl: "https://images.unsplash.com/photo-1589330273594-fade1ee91647",
-    title: "Greek Island Adventure",
-    description: "Island hopping through the stunning Cyclades",
-    duration: "6 days",
-    price: 1599,
-    rating: 4.95,
-    itinerary: [
-      {
-        title: "Santorini Sunset Cruise",
-        description: "Sail around the caldera at sunset"
-      },
-      {
-        title: "Mykonos Beach Club",
-        description: "Experience the famous beach party scene"
-      },
-      {
-        title: "Ancient Delos Tour",
-        description: "Explore the birthplace of Apollo"
-      }
-    ]
-  }
+  // ... rest of experiences array ...
 ];
 
 const ExperienceMarketing: FC = () => {
