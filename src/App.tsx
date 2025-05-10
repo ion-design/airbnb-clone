@@ -8,11 +8,9 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
-// Logos and Icons
-import AirbnbLogo from "./assets/airbnb.svg";
-// Types
-import { BigSearchItemIds, NumDaysInMonth } from "./@types/types";
-import BigSearch from "./components/header/bigsearch";
+import TripDetail from "./pages/TripDetail";
+// Assets
+import AirbnbLogo from "./assets/airbnb-logo.svg";
 
 function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
@@ -51,37 +49,37 @@ function MainContent() {
 
   const properties = [
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Notting Hill, London",
-      distance: "2 kilometers away",
+      bedrooms: 3,
+      bathrooms: 2,
       dates: "Aug 10-15",
       price: 750,
       rating: 4.88,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       location: "Shoreditch, London",
-      distance: "3 kilometers away",
+      bedrooms: 2,
+      bathrooms: 1,
       dates: "Jul 20-25",
       price: 850,
       rating: 4.96,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Chelsea, London",
-      distance: "4 kilometers away",
+      bedrooms: 4,
+      bathrooms: 3,
       dates: "Aug 1-6",
       price: 675,
       rating: 4.92,
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
       location: "Kensington, London",
-      distance: "20 kilometers away",
+      bedrooms: 5,
+      bathrooms: 4,
       dates: "Jul 14-19",
       price: 950,
       rating: 4.98,
@@ -136,6 +134,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
+          <Route path="/trip/:id" element={<TripDetail />} />
         </Routes>
       </div>
     </Router>
