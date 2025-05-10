@@ -1,5 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { FunnelIcon } from '@heroicons/react/24/solid';
+
 // Components
 import PlaceholderSearchBar from "./components/header/PlaceholderSearchBar";
 import TopTabs from "./components/header/bigsearch/TopTabs";
@@ -8,25 +10,29 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
-// Logos and Icons
-import AirbnbLogo from "./assets/airbnb.svg";
+import BigSearch from "./components/header/bigsearch";
+
 // Types
 import { BigSearchItemIds, NumDaysInMonth } from "./@types/types";
-import BigSearch from "./components/header/bigsearch";
 
 function MainContent() {
   const [showBigSearch, setShowBigSearch] = useState<boolean>(false);
-  const [selectedBigSearchItemId, setSelectedBigSearchItemId] = useState<
-    BigSearchItemIds | undefined
-  >();
-  const [selectedMonths, setMonth] = useState<
-    { month: NumDaysInMonth; year: number }[] | undefined
-  >();
+  const [selectedBigSearchItemId, setSelectedBigSearchItemId] = useState<BigSearchItemIds | undefined>();
+  const [selectedMonths, setMonth] = useState<{ month: NumDaysInMonth; year: number }[] | undefined>();
+  const [likedProperties, setLikedProperties] = useState<number[]>([]);
 
   const handleSelectBigSearchItem = (e: ChangeEvent<HTMLElement>) => {
     if (selectedBigSearchItemId === e.target.id)
       setSelectedBigSearchItemId(undefined);
     else setSelectedBigSearchItemId(e.target.id as BigSearchItemIds);
+  };
+
+  const handleLikeProperty = (index: number) => {
+    setLikedProperties(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
   };
 
   useEffect(() => {
@@ -51,93 +57,74 @@ function MainContent() {
 
   const properties = [
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      additionalImages: [
+        "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858"
+      ],
       location: "Notting Hill, London",
       distance: "2 kilometers away",
       dates: "Aug 10-15",
       price: 750,
-      rating: 4.88,
+      rating: 4.75
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
       location: "Shoreditch, London",
       distance: "3 kilometers away",
       dates: "Jul 20-25",
       price: 850,
-      rating: 4.96,
+      rating: 4.91
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       location: "Chelsea, London",
       distance: "4 kilometers away",
       dates: "Aug 1-6",
       price: 675,
-      rating: 4.92,
+      rating: 4.82
     },
     {
-      imageUrl:
-        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+      imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
       location: "Kensington, London",
       distance: "20 kilometers away",
       dates: "Jul 14-19",
       price: 950,
-      rating: 4.98,
+      rating: 4.95
     },
   ];
 
   return (
-    <>
-      <header className="border-b border-neutral-300 bg-white relative z-10">
-        <div className="py-4 px-10 flex items-center justify-between text-sm font-semibold">
-          <img src={AirbnbLogo} alt="" className="h-8" />
-          <PlaceholderSearchBar
-            showBigSearch={showBigSearch}
-            setShowBigSearch={setShowBigSearch}
-          />
-          <TopTabs showBigSearch={showBigSearch} />
-          <UserInfo />
-        </div>
-
-        {showBigSearch ? (
-          <BigSearch
-            selectedMonths={selectedMonths}
-            selectedBigSearchItemId={selectedBigSearchItemId}
-            setSelectedBigSearchItemId={setSelectedBigSearchItemId}
-            handleSelectBigSearchItem={handleSelectBigSearchItem}
-          />
-        ) : null}
+    <div className="min-h-screen bg-white flex flex-col text-base">
+      <header className="sticky top-0 z-50 bg-white border-b">
+        {/* Header content */}
       </header>
-      {showBigSearch ? (
-        <div
-          className="bg-black fixed top-0 left-0 h-screen w-screen bg-opacity-30"
-          onClick={() => setShowBigSearch(false)}
-        ></div>
-      ) : null}
-      <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <main className="flex-1 max-w-7xl mx-auto px-8 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
+            <PropertyCard
+              key={index}
+              {...property}
+              isLiked={likedProperties.includes(index)}
+              onLike={() => handleLikeProperty(index)}
+            />
           ))}
         </div>
         <CountryMarketing />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col">
-        <Routes>
-          <Route path="/" element={<MainContent />} />
-          <Route path="/trips" element={<Trips />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<MainContent />} />
+        <Route path="/trips" element={<Trips />} />
+      </Routes>
     </Router>
   );
 }
