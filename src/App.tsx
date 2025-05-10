@@ -90,7 +90,7 @@ function MainContent() {
 
   return (
     <>
-      <header className="border-b border-neutral-300 bg-white relative z-10">
+      <header className="border-b border-neutral-300 bg-white relative z-50">
         <div className="py-4 px-10 flex items-center justify-between text-sm font-semibold">
           <img src={AirbnbLogo} alt="" className="h-8" />
           <PlaceholderSearchBar
@@ -101,21 +101,21 @@ function MainContent() {
           <UserInfo />
         </div>
 
-        {showBigSearch ? (
+        {showBigSearch && (
           <BigSearch
             selectedMonths={selectedMonths}
             selectedBigSearchItemId={selectedBigSearchItemId}
             setSelectedBigSearchItemId={setSelectedBigSearchItemId}
             handleSelectBigSearchItem={handleSelectBigSearchItem}
           />
-        ) : null}
+        )}
       </header>
-      {showBigSearch ? (
+      {showBigSearch && (
         <div
-          className="bg-black fixed top-0 left-0 h-screen w-screen bg-opacity-30"
+          className="bg-black fixed top-0 left-0 h-screen w-screen bg-opacity-30 z-40"
           onClick={() => setShowBigSearch(false)}
         ></div>
-      ) : null}
+      )}
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {properties.map((property, index) => (
@@ -132,7 +132,7 @@ function MainContent() {
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 flex flex-col">
+      <div className="min-h-screen bg-gradient-to-br from-rose-50 via-blue-50 to-purple-100 flex flex-col">
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
