@@ -5,6 +5,8 @@ interface CountryCard {
   imageUrl: string;
   country: string;
   description: string;
+  rating: number;
+  price: number;
 }
 
 const CountryMarketing: FC = () => {
@@ -13,17 +15,23 @@ const CountryMarketing: FC = () => {
     {
       imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2066&q=80",
       country: "Italy",
-      description: "Explore historic cities, coastal villages, and stunning countryside"
+      description: "Explore historic cities and villages",
+      rating: 4.92,
+      price: 120
     },
     {
       imageUrl: "https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2092&q=80",
       country: "Japan",
-      description: "Experience the perfect blend of tradition and modern culture"
+      description: "Traditional meets modern culture",
+      rating: 4.96,
+      price: 150
     },
     {
       imageUrl: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       country: "Greece",
-      description: "Discover ancient ruins and pristine Mediterranean beaches"
+      description: "Mediterranean paradise",
+      rating: 4.88,
+      price: 95
     }
   ];
 
@@ -40,18 +48,24 @@ const CountryMarketing: FC = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {countries.map((country, index) => (
-          <div key={index} className="group cursor-pointer">
-            <div className="aspect-[16/9] overflow-hidden rounded-xl">
+          <div key={index} className="space-y-2">
+            <div className="aspect-square rounded-xl overflow-hidden relative">
               <img 
                 src={country.imageUrl} 
                 alt={country.country}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                className="object-cover w-full h-full hover:scale-105 transition-transform"
               />
             </div>
-            <div className="mt-4">
-              <h3 className="text-xl font-semibold mb-2">{country.country}</h3>
-              <p className="text-gray-600">{country.description}</p>
+            <div className="flex justify-between">
+              <span className="font-bold text-lg">{country.country}</span>
+              <span className="flex items-center gap-3">
+                <span className="text-yellow-500">★</span> {country.rating.toFixed(1)}
+              </span>
             </div>
+            <p className="text-gray-500">{country.description}</p>
+            <p>
+              <span className="font-semibold">£{country.price}</span> night
+            </p>
           </div>
         ))}
       </div>
