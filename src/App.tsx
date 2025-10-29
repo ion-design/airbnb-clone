@@ -8,6 +8,7 @@ import PropertyCard from "./components/PropertyCard";
 import Footer from "./components/Footer";
 import CountryMarketing from "./components/CountryMarketing";
 import Trips from "./pages/Trips";
+import PropertyShowcase from "./pages/PropertyShowcase";
 // Logos and Icons
 import AirbnbLogo from "./assets/airbnb.svg";
 // Types
@@ -51,8 +52,11 @@ function MainContent() {
 
   const properties = [
     {
-      imageUrl:
+      images: [
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      ],
       location: "Notting Hill, London",
       distance: "2 kilometers away",
       dates: "Aug 10-15",
@@ -60,8 +64,12 @@ function MainContent() {
       rating: 4.88,
     },
     {
-      imageUrl:
+      images: [
         "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+        "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      ],
       location: "Shoreditch, London",
       distance: "3 kilometers away",
       dates: "Jul 20-25",
@@ -69,8 +77,10 @@ function MainContent() {
       rating: 4.96,
     },
     {
-      imageUrl:
+      images: [
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      ],
       location: "Chelsea, London",
       distance: "4 kilometers away",
       dates: "Aug 1-6",
@@ -136,6 +146,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainContent />} />
           <Route path="/trips" element={<Trips />} />
+          <Route path="/showcase" element={<PropertyShowcase />} />
         </Routes>
       </div>
     </Router>
