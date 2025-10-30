@@ -53,38 +53,50 @@ function MainContent() {
     {
       imageUrl:
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      title: "Modern Apartment",
       location: "Notting Hill, London",
       distance: "2 kilometers away",
       dates: "Aug 10-15",
       price: 750,
       rating: 4.88,
+      reviewCount: 127,
+      isSuperhost: true,
     },
     {
       imageUrl:
         "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
+      title: "Cozy Loft",
       location: "Shoreditch, London",
       distance: "3 kilometers away",
       dates: "Jul 20-25",
       price: 850,
       rating: 4.96,
+      reviewCount: 243,
+      isSuperhost: true,
+      isInstantBook: true,
     },
     {
       imageUrl:
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      title: "Luxury Townhouse",
       location: "Chelsea, London",
       distance: "4 kilometers away",
       dates: "Aug 1-6",
       price: 675,
       rating: 4.92,
+      reviewCount: 89,
+      isInstantBook: true,
     },
     {
       imageUrl:
         "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80",
+      title: "Elegant Suite",
       location: "Kensington, London",
       distance: "20 kilometers away",
       dates: "Jul 14-19",
       price: 950,
       rating: 4.98,
+      reviewCount: 156,
     },
   ];
 
@@ -119,7 +131,11 @@ function MainContent() {
       <main className="max-w-7xl mx-auto px-8 py-8 flex-grow">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {properties.map((property, index) => (
-            <PropertyCard key={index} {...property} />
+            <PropertyCard
+              key={index}
+              {...property}
+              onClick={() => console.log(`Clicked on ${property.title}`)}
+            />
           ))}
         </div>
         <CountryMarketing />
