@@ -18,7 +18,7 @@ const PropertyCard: FC<PropertyCardProps> = ({
   rating,
 }) => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 shadow-md hover:shadow-lg transition-shadow duration-200">
       <div className="aspect-square rounded-xl overflow-hidden relative">
         <img 
           src={imageUrl} 
